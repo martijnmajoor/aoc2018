@@ -1,25 +1,10 @@
 package main
 
 import (
-	"bufio"
+	"aoc2018/utils/file"
 	"fmt"
-	"os"
 	"strconv"
 )
-
-func readLines(filename string) (lines []string) {
-	file, _ := os.Open(filename)
-
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-
-	return
-}
 
 func resultingFrequency(changes []string) (result int) {
 	for _, change := range changes {
@@ -47,7 +32,7 @@ func frequencyReachedTwice(changes []string) (result int) {
 }
 
 func main() {
-	changes := readLines("frequency-changes.txt")
+	changes := file.ReadLines("frequency-changes.txt")
 
 	fmt.Println("part one:", resultingFrequency(changes))
 	fmt.Println("part two:", frequencyReachedTwice(changes))
